@@ -21,20 +21,20 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'svexample' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'svtheme' ); ?></a>
 
-		<header id="masthead" class="<?php echo is_singular() && svexample_can_show_post_thumbnail() ? 'site-header featured-image' : 'site-header'; ?>">
+		<header id="masthead" class="<?php echo is_singular() && svtheme_can_show_post_thumbnail() ? 'site-header featured-image' : 'site-header'; ?>">
 
 			<div class="site-branding-container">
 				<?php get_template_part( 'template-parts/header/site', 'branding' ); ?>
 			</div><!-- .layout-wrap -->
 
-			<?php if ( is_singular() && svexample_can_show_post_thumbnail() ) : ?>
+			<?php if ( is_singular() && svtheme_can_show_post_thumbnail() ) : ?>
 				<div class="site-featured-image">
 					<?php
-						svexample_post_thumbnail();
+						svtheme_post_thumbnail();
 						the_post();
-						$discussion = ! is_page() && svexample_can_show_post_thumbnail() ? svexample_get_discussion_data() : null;
+						$discussion = ! is_page() && svtheme_can_show_post_thumbnail() ? svtheme_get_discussion_data() : null;
 
 						$classes = 'entry-header';
 					if ( ! empty( $discussion ) && absint( $discussion->responses ) > 0 ) {

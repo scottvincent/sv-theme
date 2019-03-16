@@ -30,7 +30,7 @@ get_header();
 			}
 
 			// Previous/next page navigation.
-			svexample_the_posts_navigation();
+			svtheme_the_posts_navigation();
 
 		} else {
 

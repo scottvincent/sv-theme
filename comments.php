@@ -21,7 +21,7 @@ if ( post_password_required() ) {
 	return;
 }
 
-$discussion = svexample_get_discussion_data();
+$discussion = svtheme_get_discussion_data();
 ?>
 
 <div id="comments" class="<?php echo comments_open() ? 'comments-area' : 'comments-area comments-closed'; ?>">
@@ -30,14 +30,14 @@ $discussion = svexample_get_discussion_data();
 		<?php
 		if ( comments_open() ) {
 			if ( have_comments() ) {
-				_e( 'Join the Conversation', 'svexample' );
+				_e( 'Join the Conversation', 'svtheme' );
 			} else {
-				_e( 'Leave a comment', 'svexample' );
+				_e( 'Leave a comment', 'svtheme' );
 			}
 		} else {
 			if ( '1' == $discussion->responses ) {
 				/* translators: %s: post title */
-				printf( _x( 'One reply on &ldquo;%s&rdquo;', 'comments title', 'svexample' ), get_the_title() );
+				printf( _x( 'One reply on &ldquo;%s&rdquo;', 'comments title', 'svtheme' ), get_the_title() );
 			} else {
 				printf(
 					/* translators: 1: number of comments, 2: post title */
@@ -46,7 +46,7 @@ $discussion = svexample_get_discussion_data();
 						'%1$s replies on &ldquo;%2$s&rdquo;',
 						$discussion->responses,
 						'comments title',
-						'svexample'
+						'svtheme'
 					),
 					number_format_i18n( $discussion->responses ),
 					get_the_title()
@@ -67,7 +67,7 @@ $discussion = svexample_get_discussion_data();
 
 		// Show comment form at top if showing newest comments at the top.
 		if ( comments_open() ) {
-			svexample_comment_form( 'desc' );
+			svtheme_comment_form( 'desc' );
 		}
 
 		?>
@@ -76,7 +76,7 @@ $discussion = svexample_get_discussion_data();
 			wp_list_comments(
 				array(
 					'walker'      => new SvTheme_Walker_Comment(),
-					'avatar_size' => svexample_get_avatar_size(),
+					'avatar_size' => svtheme_get_avatar_size(),
 					'short_ping'  => true,
 					'style'       => 'ol',
 				)
@@ -87,13 +87,13 @@ $discussion = svexample_get_discussion_data();
 
 		// Show comment navigation
 		if ( have_comments() ) :
-			$prev_icon     = svexample_get_icon_svg( 'chevron_left', 22 );
-			$next_icon     = svexample_get_icon_svg( 'chevron_right', 22 );
-			$comments_text = __( 'Comments', 'svexample' );
+			$prev_icon     = svtheme_get_icon_svg( 'chevron_left', 22 );
+			$next_icon     = svtheme_get_icon_svg( 'chevron_right', 22 );
+			$comments_text = __( 'Comments', 'svtheme' );
 			the_comments_navigation(
 				array(
-					'prev_text' => sprintf( '%s <span class="nav-prev-text"><span class="primary-text">%s</span> <span class="secondary-text">%s</span></span>', $prev_icon, __( 'Previous', 'svexample' ), __( 'Comments', 'svexample' ) ),
-					'next_text' => sprintf( '<span class="nav-next-text"><span class="primary-text">%s</span> <span class="secondary-text">%s</span></span> %s', __( 'Next', 'svexample' ), __( 'Comments', 'svexample' ), $next_icon ),
+					'prev_text' => sprintf( '%s <span class="nav-prev-text"><span class="primary-text">%s</span> <span class="secondary-text">%s</span></span>', $prev_icon, __( 'Previous', 'svtheme' ), __( 'Comments', 'svtheme' ) ),
+					'next_text' => sprintf( '<span class="nav-next-text"><span class="primary-text">%s</span> <span class="secondary-text">%s</span></span> %s', __( 'Next', 'svtheme' ), __( 'Comments', 'svtheme' ), $next_icon ),
 				)
 			);
 		endif;
@@ -102,9 +102,9 @@ $discussion = svexample_get_discussion_data();
 		if ( comments_open() && 'asc' === strtolower( get_option( 'comment_order', 'asc' ) ) ) :
 			?>
 			<div class="comment-form-flex">
-				<span class="screen-reader-text"><?php _e( 'Leave a comment', 'svexample' ); ?></span>
-				<?php svexample_comment_form( 'asc' ); ?>
-				<h2 class="comments-title" aria-hidden="true"><?php _e( 'Leave a comment', 'svexample' ); ?></h2>
+				<span class="screen-reader-text"><?php _e( 'Leave a comment', 'svtheme' ); ?></span>
+				<?php svtheme_comment_form( 'asc' ); ?>
+				<h2 class="comments-title" aria-hidden="true"><?php _e( 'Leave a comment', 'svtheme' ); ?></h2>
 			</div>
 			<?php
 		endif;
@@ -113,7 +113,7 @@ $discussion = svexample_get_discussion_data();
 		if ( ! comments_open() ) :
 			?>
 			<p class="no-comments">
-				<?php _e( 'Comments are closed.', 'svexample' ); ?>
+				<?php _e( 'Comments are closed.', 'svtheme' ); ?>
 			</p>
 			<?php
 		endif;
@@ -121,7 +121,7 @@ $discussion = svexample_get_discussion_data();
 	else :
 
 		// Show comment form.
-		svexample_comment_form( true );
+		svtheme_comment_form( true );
 
 	endif; // if have_comments();
 	?>

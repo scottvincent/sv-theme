@@ -17,7 +17,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7', '<' ) ) {
 	return;
 }
 
-if ( ! function_exists( 'svexample_setup' ) ) :
+if ( ! function_exists( 'svtheme_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -25,14 +25,14 @@ if ( ! function_exists( 'svexample_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function svexample_setup() {
+	function svtheme_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on Twenty Nineteen, use a find and replace
-		 * to change 'svexample' to the name of your theme in all the template files.
+		 * to change 'svtheme' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'svexample', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'svtheme', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -56,9 +56,9 @@ if ( ! function_exists( 'svexample_setup' ) ) :
 		// This theme uses wp_nav_menu() in two locations.
 		register_nav_menus(
 			array(
-				'menu-1' => __( 'Primary', 'svexample' ),
-				'footer' => __( 'Footer Menu', 'svexample' ),
-				'social' => __( 'Social Links Menu', 'svexample' ),
+				'menu-1' => __( 'Primary', 'svtheme' ),
+				'footer' => __( 'Footer Menu', 'svtheme' ),
+				'social' => __( 'Social Links Menu', 'svtheme' ),
 			)
 		);
 
@@ -112,62 +112,62 @@ if ( ! function_exists( 'svexample_setup' ) ) :
 			'editor-font-sizes',
 			array(
 				array(
-					'name'      => __( 'Small', 'svexample' ),
-					'shortName' => __( 'S', 'svexample' ),
+					'name'      => __( 'Small', 'svtheme' ),
+					'shortName' => __( 'S', 'svtheme' ),
 					'size'      => 19.5,
 					'slug'      => 'small',
 				),
 				array(
-					'name'      => __( 'Normal', 'svexample' ),
-					'shortName' => __( 'M', 'svexample' ),
+					'name'      => __( 'Normal', 'svtheme' ),
+					'shortName' => __( 'M', 'svtheme' ),
 					'size'      => 22,
 					'slug'      => 'normal',
 				),
 				array(
-					'name'      => __( 'Large', 'svexample' ),
-					'shortName' => __( 'L', 'svexample' ),
+					'name'      => __( 'Large', 'svtheme' ),
+					'shortName' => __( 'L', 'svtheme' ),
 					'size'      => 36.5,
 					'slug'      => 'large',
 				),
 				array(
-					'name'      => __( 'Huge', 'svexample' ),
-					'shortName' => __( 'XL', 'svexample' ),
+					'name'      => __( 'Huge', 'svtheme' ),
+					'shortName' => __( 'XL', 'svtheme' ),
 					'size'      => 49.5,
 					'slug'      => 'huge',
 				),
 			)
 		);
 
-		$default_hue     = svexample_get_default_hue();
-		$saturation      = apply_filters( 'svexample_custom_colors_saturation', 100 );
-		$lightness       = apply_filters( 'svexample_custom_colors_lightness', 33 );
-		$lightness_hover = apply_filters( 'svexample_custom_colors_lightness_hover', 23 );
+		$default_hue     = svtheme_get_default_hue();
+		$saturation      = apply_filters( 'svtheme_custom_colors_saturation', 100 );
+		$lightness       = apply_filters( 'svtheme_custom_colors_lightness', 33 );
+		$lightness_hover = apply_filters( 'svtheme_custom_colors_lightness_hover', 23 );
 		// Editor color palette.
 		add_theme_support(
 			'editor-color-palette',
 			array(
 				array(
-					'name'  => __( 'Primary', 'svexample' ),
+					'name'  => __( 'Primary', 'svtheme' ),
 					'slug'  => 'primary',
-					'color' => svexample_hsl_hex( 'default' === get_theme_mod( 'primary_color' ) ? $default_hue : get_theme_mod( 'primary_color_hue', $default_hue ), $saturation, $lightness ),
+					'color' => svtheme_hsl_hex( 'default' === get_theme_mod( 'primary_color' ) ? $default_hue : get_theme_mod( 'primary_color_hue', $default_hue ), $saturation, $lightness ),
 				),
 				array(
-					'name'  => __( 'Secondary', 'svexample' ),
+					'name'  => __( 'Secondary', 'svtheme' ),
 					'slug'  => 'secondary',
-					'color' => svexample_hsl_hex( 'default' === get_theme_mod( 'primary_color' ) ? $default_hue : get_theme_mod( 'primary_color_hue', $default_hue ), $saturation, 23 ),
+					'color' => svtheme_hsl_hex( 'default' === get_theme_mod( 'primary_color' ) ? $default_hue : get_theme_mod( 'primary_color_hue', $default_hue ), $saturation, 23 ),
 				),
 				array(
-					'name'  => __( 'Dark Gray', 'svexample' ),
+					'name'  => __( 'Dark Gray', 'svtheme' ),
 					'slug'  => 'dark-gray',
 					'color' => '#111',
 				),
 				array(
-					'name'  => __( 'Light Gray', 'svexample' ),
+					'name'  => __( 'Light Gray', 'svtheme' ),
 					'slug'  => 'light-gray',
 					'color' => '#767676',
 				),
 				array(
-					'name'  => __( 'White', 'svexample' ),
+					'name'  => __( 'White', 'svtheme' ),
 					'slug'  => 'white',
 					'color' => '#FFF',
 				),
@@ -178,20 +178,20 @@ if ( ! function_exists( 'svexample_setup' ) ) :
 		add_theme_support( 'responsive-embeds' );
 	}
 endif;
-add_action( 'after_setup_theme', 'svexample_setup' );
+add_action( 'after_setup_theme', 'svtheme_setup' );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function svexample_widgets_init() {
+function svtheme_widgets_init() {
 
 	register_sidebar(
 		array(
-			'name'          => __( 'Footer', 'svexample' ),
+			'name'          => __( 'Footer', 'svtheme' ),
 			'id'            => 'sidebar-1',
-			'description'   => __( 'Add widgets here to appear in your footer.', 'svexample' ),
+			'description'   => __( 'Add widgets here to appear in your footer.', 'svtheme' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -200,7 +200,7 @@ function svexample_widgets_init() {
 	);
 
 }
-add_action( 'widgets_init', 'svexample_widgets_init' );
+add_action( 'widgets_init', 'svtheme_widgets_init' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -209,34 +209,34 @@ add_action( 'widgets_init', 'svexample_widgets_init' );
  *
  * @global int $content_width Content width.
  */
-function svexample_content_width() {
+function svtheme_content_width() {
 	// This variable is intended to be overruled from themes.
 	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'svexample_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'svtheme_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'svexample_content_width', 0 );
+add_action( 'after_setup_theme', 'svtheme_content_width', 0 );
 
 /**
  * Enqueue scripts and styles.
  */
-function svexample_scripts() {
-	wp_enqueue_style( 'svexample-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+function svtheme_scripts() {
+	wp_enqueue_style( 'svtheme-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
 
-	wp_style_add_data( 'svexample-style', 'rtl', 'replace' );
+	wp_style_add_data( 'svtheme-style', 'rtl', 'replace' );
 
 	if ( has_nav_menu( 'menu-1' ) ) {
-		wp_enqueue_script( 'svexample-priority-menu', get_theme_file_uri( '/js/priority-menu.js' ), array(), '1.1', true );
-		wp_enqueue_script( 'svexample-touch-navigation', get_theme_file_uri( '/js/touch-keyboard-navigation.js' ), array(), '1.1', true );
+		wp_enqueue_script( 'svtheme-priority-menu', get_theme_file_uri( '/js/priority-menu.js' ), array(), '1.1', true );
+		wp_enqueue_script( 'svtheme-touch-navigation', get_theme_file_uri( '/js/touch-keyboard-navigation.js' ), array(), '1.1', true );
 	}
 
-	wp_enqueue_style( 'svexample-print-style', get_template_directory_uri() . '/print.css', array(), wp_get_theme()->get( 'Version' ), 'print' );
+	wp_enqueue_style( 'svtheme-print-style', get_template_directory_uri() . '/print.css', array(), wp_get_theme()->get( 'Version' ), 'print' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'svexample_scripts' );
+add_action( 'wp_enqueue_scripts', 'svtheme_scripts' );
 
 /**
  * Fix skip link focus in IE11.
@@ -246,7 +246,7 @@ add_action( 'wp_enqueue_scripts', 'svexample_scripts' );
  *
  * @link https://git.io/vWdr2
  */
-function svexample_skip_link_focus_fix() {
+function svtheme_skip_link_focus_fix() {
 	// The following is minified via `terser --compress --mangle -- js/skip-link-focus-fix.js`.
 	?>
 	<script>
@@ -254,47 +254,47 @@ function svexample_skip_link_focus_fix() {
 	</script>
 	<?php
 }
-add_action( 'wp_print_footer_scripts', 'svexample_skip_link_focus_fix' );
+add_action( 'wp_print_footer_scripts', 'svtheme_skip_link_focus_fix' );
 
 /**
  * Enqueue supplemental block editor styles.
  */
-function svexample_editor_customizer_styles() {
+function svtheme_editor_customizer_styles() {
 
-	wp_enqueue_style( 'svexample-editor-customizer-styles', get_theme_file_uri( '/style-editor-customizer.css' ), false, '1.1', 'all' );
+	wp_enqueue_style( 'svtheme-editor-customizer-styles', get_theme_file_uri( '/style-editor-customizer.css' ), false, '1.1', 'all' );
 
 	if ( 'custom' === get_theme_mod( 'primary_color' ) ) {
 		// Include color patterns.
 		require_once get_parent_theme_file_path( '/inc/color-patterns.php' );
-		wp_add_inline_style( 'svexample-editor-customizer-styles', svexample_custom_colors_css() );
+		wp_add_inline_style( 'svtheme-editor-customizer-styles', svtheme_custom_colors_css() );
 	}
 }
-add_action( 'enqueue_block_editor_assets', 'svexample_editor_customizer_styles' );
+add_action( 'enqueue_block_editor_assets', 'svtheme_editor_customizer_styles' );
 
 /**
  * Display custom color CSS in customizer and on frontend.
  */
-function svexample_colors_css_wrap() {
+function svtheme_colors_css_wrap() {
 
 	// Only bother if we haven't customized the color.
-	if ( 'default' === get_theme_mod( 'primary_color', 'default' ) && ! svexample_has_custom_default_hue() ) {
+	if ( 'default' === get_theme_mod( 'primary_color', 'default' ) && ! svtheme_has_custom_default_hue() ) {
 		return;
 	}
 
 	require_once get_parent_theme_file_path( '/inc/color-patterns.php' );
 
-	$primary_color = svexample_get_default_hue();
+	$primary_color = svtheme_get_default_hue();
 	if ( 'default' !== get_theme_mod( 'primary_color', 'default' ) ) {
 		$primary_color = get_theme_mod( 'primary_color_hue', $primary_color );
 	}
 	?>
 
 	<style type="text/css" id="custom-theme-colors" <?php echo is_customize_preview() ? 'data-hue="' . absint( $primary_color ) . '"' : ''; ?>>
-		<?php echo svexample_custom_colors_css(); ?>
+		<?php echo svtheme_custom_colors_css(); ?>
 	</style>
 	<?php
 }
-add_action( 'wp_head', 'svexample_colors_css_wrap' );
+add_action( 'wp_head', 'svtheme_colors_css_wrap' );
 
 /**
  * Default color filters.
@@ -304,12 +304,12 @@ require get_template_directory() . '/inc/color-filters.php';
 /**
  * SVG Icons class.
  */
-require get_template_directory() . '/classes/class-svexample-svg-icons.php';
+require get_template_directory() . '/classes/class-svtheme-svg-icons.php';
 
 /**
  * Custom Comment Walker template.
  */
-require get_template_directory() . '/classes/class-svexample-walker-comment.php';
+require get_template_directory() . '/classes/class-svtheme-walker-comment.php';
 
 /**
  * Enhance the theme by hooking into WordPress.

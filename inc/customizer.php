@@ -12,7 +12,7 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function svexample_customize_register( $wp_customize ) {
+function svtheme_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
@@ -22,14 +22,14 @@ function svexample_customize_register( $wp_customize ) {
 			'blogname',
 			array(
 				'selector'        => '.site-title a',
-				'render_callback' => 'svexample_customize_partial_blogname',
+				'render_callback' => 'svtheme_customize_partial_blogname',
 			)
 		);
 		$wp_customize->selective_refresh->add_partial(
 			'blogdescription',
 			array(
 				'selector'        => '.site-description',
-				'render_callback' => 'svexample_customize_partial_blogdescription',
+				'render_callback' => 'svtheme_customize_partial_blogdescription',
 			)
 		);
 	}
@@ -42,7 +42,7 @@ function svexample_customize_register( $wp_customize ) {
 		array(
 			'default'           => 'default',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => 'svexample_sanitize_color_option',
+			'sanitize_callback' => 'svtheme_sanitize_color_option',
 		)
 	);
 
@@ -50,10 +50,10 @@ function svexample_customize_register( $wp_customize ) {
 		'primary_color',
 		array(
 			'type'     => 'radio',
-			'label'    => __( 'Primary Color', 'svexample' ),
+			'label'    => __( 'Primary Color', 'svtheme' ),
 			'choices'  => array(
-				'default' => _x( 'Default', 'primary color', 'svexample' ),
-				'custom'  => _x( 'Custom', 'primary color', 'svexample' ),
+				'default' => _x( 'Default', 'primary color', 'svtheme' ),
+				'custom'  => _x( 'Custom', 'primary color', 'svtheme' ),
 			),
 			'section'  => 'colors',
 			'priority' => 5,
@@ -64,7 +64,7 @@ function svexample_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'primary_color_hue',
 		array(
-			'default'           => svexample_get_default_hue(),
+			'default'           => svtheme_get_default_hue(),
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'absint',
 		)
@@ -75,7 +75,7 @@ function svexample_customize_register( $wp_customize ) {
 			$wp_customize,
 			'primary_color_hue',
 			array(
-				'description' => __( 'Apply a custom color for buttons, links, featured images, etc.', 'svexample' ),
+				'description' => __( 'Apply a custom color for buttons, links, featured images, etc.', 'svtheme' ),
 				'section'     => 'colors',
 				'mode'        => 'hue',
 			)
@@ -95,20 +95,20 @@ function svexample_customize_register( $wp_customize ) {
 	$wp_customize->add_control(
 		'image_filter',
 		array(
-			'label'   => __( 'Apply a filter to featured images using the primary color', 'svexample' ),
+			'label'   => __( 'Apply a filter to featured images using the primary color', 'svtheme' ),
 			'section' => 'colors',
 			'type'    => 'checkbox',
 		)
 	);
 }
-add_action( 'customize_register', 'svexample_customize_register' );
+add_action( 'customize_register', 'svtheme_customize_register' );
 
 /**
  * Render the site title for the selective refresh partial.
  *
  * @return void
  */
-function svexample_customize_partial_blogname() {
+function svtheme_customize_partial_blogname() {
 	bloginfo( 'name' );
 }
 
@@ -117,28 +117,28 @@ function svexample_customize_partial_blogname() {
  *
  * @return void
  */
-function svexample_customize_partial_blogdescription() {
+function svtheme_customize_partial_blogdescription() {
 	bloginfo( 'description' );
 }
 
 /**
  * Bind JS handlers to instantly live-preview changes.
  */
-function svexample_customize_preview_js() {
-	wp_enqueue_script( 'svexample-customize-preview', get_theme_file_uri( '/js/customize-preview.js' ), array( 'customize-preview' ), '20181231', true );
-	wp_localize_script( 'svexample-customize-preview', '_SvThemePreviewData', array(
-		'default_hue' => svexample_get_default_hue()
+function svtheme_customize_preview_js() {
+	wp_enqueue_script( 'svtheme-customize-preview', get_theme_file_uri( '/js/customize-preview.js' ), array( 'customize-preview' ), '20181231', true );
+	wp_localize_script( 'svtheme-customize-preview', '_SvThemePreviewData', array(
+		'default_hue' => svtheme_get_default_hue()
 	));
 }
-add_action( 'customize_preview_init', 'svexample_customize_preview_js' );
+add_action( 'customize_preview_init', 'svtheme_customize_preview_js' );
 
 /**
  * Load dynamic logic for the customizer controls area.
  */
-function svexample_panels_js() {
-	wp_enqueue_script( 'svexample-customize-controls', get_theme_file_uri( '/js/customize-controls.js' ), array(), '20181231', true );
+function svtheme_panels_js() {
+	wp_enqueue_script( 'svtheme-customize-controls', get_theme_file_uri( '/js/customize-controls.js' ), array(), '20181231', true );
 }
-add_action( 'customize_controls_enqueue_scripts', 'svexample_panels_js' );
+add_action( 'customize_controls_enqueue_scripts', 'svtheme_panels_js' );
 
 /**
  * Sanitize custom color choice.
@@ -147,7 +147,7 @@ add_action( 'customize_controls_enqueue_scripts', 'svexample_panels_js' );
  *
  * @return string
  */
-function svexample_sanitize_color_option( $choice ) {
+function svtheme_sanitize_color_option( $choice ) {
 	$valid = array(
 		'default',
 		'custom',

@@ -19,7 +19,7 @@ get_header();
 
 			<header class="page-header">
 				<h1 class="page-title">
-					<?php _e( 'Search results for:', 'svexample' ); ?>
+					<?php _e( 'Search results for:', 'svtheme' ); ?>
 				</h1>
 				<div class="page-description"><?php echo get_search_query(); ?></div>
 			</header><!-- .page-header -->
@@ -40,7 +40,7 @@ get_header();
 			endwhile;
 
 			// Previous/next page navigation.
-			svexample_the_posts_navigation();
+			svtheme_the_posts_navigation();
 
 			// If no content, include the "No posts found" template.
 		else :

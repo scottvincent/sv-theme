@@ -1,11 +1,17 @@
 {
   "name": "sv-theme",
   "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/scottvincent/sv-theme.git",
+    "name": "sv-theme",
+    "version": "1.0.0"
+  },
   "description": "Default WP Theme",
   "bugs": {
-    "url": "https://github.com/scottvincent/sv-bedrock/issues"
+    "url": "https://github.com/scottvincent/sv-theme/issues"
   },
-  "homepage": "https://github.com/scottvincent/sv-bedrock#readme",
+  "homepage": "https://github.com/scottvincent/sv-theme#readme",
   "devDependencies": {
     "@wordpress/browserslist-config": "^2.2.2",
     "autoprefixer": "^9.1.5",

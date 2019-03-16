@@ -10,9 +10,9 @@
 /**
  * Generate the CSS for the current primary color.
  */
-function svexample_custom_colors_css() {
+function svtheme_custom_colors_css() {
 
-	$primary_color = svexample_get_default_hue();
+	$primary_color = svtheme_get_default_hue();
 	if ( 'default' !== get_theme_mod( 'primary_color', 'default' ) ) {
 		$primary_color = absint( get_theme_mod( 'primary_color_hue', $primary_color ) );
 	}
@@ -24,7 +24,7 @@ function svexample_custom_colors_css() {
 	 *
 	 * @param int $saturation Color saturation level.
 	 */
-	$saturation = svexample_get_default_saturation();
+	$saturation = svtheme_get_default_saturation();
 	$saturation = absint( $saturation ) . '%';
 
 	/**
@@ -34,7 +34,7 @@ function svexample_custom_colors_css() {
 	 *
 	 * @param int $saturation_selection Selection color saturation level.
 	 */
-	$saturation_selection = svexample_get_default_saturation_selection();
+	$saturation_selection = svtheme_get_default_saturation_selection();
 	$saturation_selection = absint( $saturation_selection ) . '%';
 
 	/**
@@ -44,7 +44,7 @@ function svexample_custom_colors_css() {
 	 *
 	 * @param int $lightness Color lightness level.
 	 */
-	$lightness = svexample_get_default_lightness();
+	$lightness = svtheme_get_default_lightness();
 	$lightness = absint( $lightness ) . '%';
 
 	/**
@@ -54,7 +54,7 @@ function svexample_custom_colors_css() {
 	 *
 	 * @param int $lightness_hover Hover color lightness level.
 	 */
-	$lightness_hover = svexample_get_default_lightness_hover();
+	$lightness_hover = svtheme_get_default_lightness_hover();
 	$lightness_hover = absint( $lightness_hover ) . '%';
 
 	/**
@@ -64,7 +64,7 @@ function svexample_custom_colors_css() {
 	 *
 	 * @param int $lightness_selection Selection color lightness level.
 	 */
-	$lightness_selection = svexample_get_default_lightness_selection();
+	$lightness_selection = svtheme_get_default_lightness_selection();
 	$lightness_selection = absint( $lightness_selection ) . '%';
 
 	$theme_css = '
@@ -267,5 +267,5 @@ function svexample_custom_colors_css() {
 	 * @param int    $primary_color The user's selected color hue.
 	 * @param string $saturation    Filtered theme color saturation level.
 	 */
-	return apply_filters( 'svexample_custom_colors_css', $theme_css, $primary_color, $saturation );
+	return apply_filters( 'svtheme_custom_colors_css', $theme_css, $primary_color, $saturation );
 }

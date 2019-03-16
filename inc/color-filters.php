@@ -24,8 +24,8 @@ define( 'TWENTYNINETEEN_DEFAULT_LIGHTNESS_HOVER', 23 );
  *
  * @return number the default hue
  */
-function svexample_get_default_hue() {
-	return apply_filters( 'svexample_default_hue', TWENTYNINETEEN_DEFAULT_HUE );
+function svtheme_get_default_hue() {
+	return apply_filters( 'svtheme_default_hue', TWENTYNINETEEN_DEFAULT_HUE );
 }
 
 /**
@@ -33,8 +33,8 @@ function svexample_get_default_hue() {
  *
  * @return number the default saturation
  */
-function svexample_get_default_saturation() {
-	return apply_filters( 'svexample_default_saturation', TWENTYNINETEEN_DEFAULT_SATURATION );
+function svtheme_get_default_saturation() {
+	return apply_filters( 'svtheme_default_saturation', TWENTYNINETEEN_DEFAULT_SATURATION );
 }
 
 /**
@@ -42,8 +42,8 @@ function svexample_get_default_saturation() {
  *
  * @return number the default lightness
  */
-function svexample_get_default_lightness() {
-	return apply_filters( 'svexample_default_lightness', TWENTYNINETEEN_DEFAULT_LIGHTNESS );
+function svtheme_get_default_lightness() {
+	return apply_filters( 'svtheme_default_lightness', TWENTYNINETEEN_DEFAULT_LIGHTNESS );
 }
 
 /**
@@ -51,8 +51,8 @@ function svexample_get_default_lightness() {
  *
  * @return number the default saturation selection
  */
-function svexample_get_default_saturation_selection() {
-	return apply_filters( 'svexample_default_saturation_selection', TWENTYNINETEEN_DEFAULT_SATURATION_SELECTION );
+function svtheme_get_default_saturation_selection() {
+	return apply_filters( 'svtheme_default_saturation_selection', TWENTYNINETEEN_DEFAULT_SATURATION_SELECTION );
 }
 
 /**
@@ -60,8 +60,8 @@ function svexample_get_default_saturation_selection() {
  *
  * @return number the default lightness selection
  */
-function svexample_get_default_lightness_selection() {
-	return apply_filters( 'svexample_default_lightness_selection', TWENTYNINETEEN_DEFAULT_LIGHTNESS_SELECTION );
+function svtheme_get_default_lightness_selection() {
+	return apply_filters( 'svtheme_default_lightness_selection', TWENTYNINETEEN_DEFAULT_LIGHTNESS_SELECTION );
 }
 
 /**
@@ -69,10 +69,10 @@ function svexample_get_default_lightness_selection() {
  *
  * @return number the default lightness hover
  */
-function svexample_get_default_lightness_hover() {
-	return apply_filters( 'svexample_default_lightness_hover', TWENTYNINETEEN_DEFAULT_LIGHTNESS_HOVER );
+function svtheme_get_default_lightness_hover() {
+	return apply_filters( 'svtheme_default_lightness_hover', TWENTYNINETEEN_DEFAULT_LIGHTNESS_HOVER );
 }
 
-function svexample_has_custom_default_hue() {
-	return svexample_get_default_hue() !== TWENTYNINETEEN_DEFAULT_HUE;
+function svtheme_has_custom_default_hue() {
+	return svtheme_get_default_hue() !== TWENTYNINETEEN_DEFAULT_HUE;
 }

@@ -13,7 +13,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function svexample_body_classes( $classes ) {
+function svtheme_body_classes( $classes ) {
 
 	if ( is_singular() ) {
 		// Adds `singular` to singular pages.
@@ -24,39 +24,39 @@ function svexample_body_classes( $classes ) {
 	}
 
 	// Adds a class if image filters are enabled.
-	if ( svexample_image_filters_enabled() ) {
+	if ( svtheme_image_filters_enabled() ) {
 		$classes[] = 'image-filters-enabled';
 	}
 
 	return $classes;
 }
-add_filter( 'body_class', 'svexample_body_classes' );
+add_filter( 'body_class', 'svtheme_body_classes' );
 
 /**
  * Adds custom class to the array of posts classes.
  */
-function svexample_post_classes( $classes, $class, $post_id ) {
+function svtheme_post_classes( $classes, $class, $post_id ) {
 	$classes[] = 'entry';
 
 	return $classes;
 }
-add_filter( 'post_class', 'svexample_post_classes', 10, 3 );
+add_filter( 'post_class', 'svtheme_post_classes', 10, 3 );
 
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.
  */
-function svexample_pingback_header() {
+function svtheme_pingback_header() {
 	if ( is_singular() && pings_open() ) {
 		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
 	}
 }
-add_action( 'wp_head', 'svexample_pingback_header' );
+add_action( 'wp_head', 'svtheme_pingback_header' );
 
 /**
  * Changes comment form default fields.
  */
-function svexample_comment_form_defaults( $defaults ) {
+function svtheme_comment_form_defaults( $defaults ) {
 	$comment_field = $defaults['comment_field'];
 
 	// Adjust height of comment form.
@@ -64,48 +64,48 @@ function svexample_comment_form_defaults( $defaults ) {
 
 	return $defaults;
 }
-add_filter( 'comment_form_defaults', 'svexample_comment_form_defaults' );
+add_filter( 'comment_form_defaults', 'svtheme_comment_form_defaults' );
 
 /**
  * Filters the default archive titles.
  */
-function svexample_get_the_archive_title() {
+function svtheme_get_the_archive_title() {
 	if ( is_category() ) {
-		$title = __( 'Category Archives: ', 'svexample' ) . '<span class="page-description">' . single_term_title( '', false ) . '</span>';
+		$title = __( 'Category Archives: ', 'svtheme' ) . '<span class="page-description">' . single_term_title( '', false ) . '</span>';
 	} elseif ( is_tag() ) {
-		$title = __( 'Tag Archives: ', 'svexample' ) . '<span class="page-description">' . single_term_title( '', false ) . '</span>';
+		$title = __( 'Tag Archives: ', 'svtheme' ) . '<span class="page-description">' . single_term_title( '', false ) . '</span>';
 	} elseif ( is_author() ) {
-		$title = __( 'Author Archives: ', 'svexample' ) . '<span class="page-description">' . get_the_author_meta( 'display_name' ) . '</span>';
+		$title = __( 'Author Archives: ', 'svtheme' ) . '<span class="page-description">' . get_the_author_meta( 'display_name' ) . '</span>';
 	} elseif ( is_year() ) {
-		$title = __( 'Yearly Archives: ', 'svexample' ) . '<span class="page-description">' . get_the_date( _x( 'Y', 'yearly archives date format', 'svexample' ) ) . '</span>';
+		$title = __( 'Yearly Archives: ', 'svtheme' ) . '<span class="page-description">' . get_the_date( _x( 'Y', 'yearly archives date format', 'svtheme' ) ) . '</span>';
 	} elseif ( is_month() ) {
-		$title = __( 'Monthly Archives: ', 'svexample' ) . '<span class="page-description">' . get_the_date( _x( 'F Y', 'monthly archives date format', 'svexample' ) ) . '</span>';
+		$title = __( 'Monthly Archives: ', 'svtheme' ) . '<span class="page-description">' . get_the_date( _x( 'F Y', 'monthly archives date format', 'svtheme' ) ) . '</span>';
 	} elseif ( is_day() ) {
-		$title = __( 'Daily Archives: ', 'svexample' ) . '<span class="page-description">' . get_the_date() . '</span>';
+		$title = __( 'Daily Archives: ', 'svtheme' ) . '<span class="page-description">' . get_the_date() . '</span>';
 	} elseif ( is_post_type_archive() ) {
-		$title = __( 'Post Type Archives: ', 'svexample' ) . '<span class="page-description">' . post_type_archive_title( '', false ) . '</span>';
+		$title = __( 'Post Type Archives: ', 'svtheme' ) . '<span class="page-description">' . post_type_archive_title( '', false ) . '</span>';
 	} elseif ( is_tax() ) {
 		$tax = get_taxonomy( get_queried_object()->taxonomy );
 		/* translators: %s: Taxonomy singular name */
-		$title = sprintf( esc_html__( '%s Archives:', 'svexample' ), $tax->labels->singular_name );
+		$title = sprintf( esc_html__( '%s Archives:', 'svtheme' ), $tax->labels->singular_name );
 	} else {
-		$title = __( 'Archives:', 'svexample' );
+		$title = __( 'Archives:', 'svtheme' );
 	}
 	return $title;
 }
-add_filter( 'get_the_archive_title', 'svexample_get_the_archive_title' );
+add_filter( 'get_the_archive_title', 'svtheme_get_the_archive_title' );
 
 /**
  * Determines if post thumbnail can be displayed.
  */
-function svexample_can_show_post_thumbnail() {
-	return apply_filters( 'svexample_can_show_post_thumbnail', ! post_password_required() && ! is_attachment() && has_post_thumbnail() );
+function svtheme_can_show_post_thumbnail() {
+	return apply_filters( 'svtheme_can_show_post_thumbnail', ! post_password_required() && ! is_attachment() && has_post_thumbnail() );
 }
 
 /**
  * Returns true if image filters are enabled on the theme options.
  */
-function svexample_image_filters_enabled() {
+function svtheme_image_filters_enabled() {
 	return 0 !== get_theme_mod( 'image_filter', 1 );
 }
 
@@ -117,7 +117,7 @@ function svexample_image_filters_enabled() {
  * @param array $attr  Attributes for the image markup.
  * @return string Value for use in post thumbnail 'sizes' attribute.
  */
-function svexample_post_thumbnail_sizes_attr( $attr ) {
+function svtheme_post_thumbnail_sizes_attr( $attr ) {
 
 	if ( is_admin() ) {
 		return $attr;
@@ -129,12 +129,12 @@ function svexample_post_thumbnail_sizes_attr( $attr ) {
 
 	return $attr;
 }
-add_filter( 'wp_get_attachment_image_attributes', 'svexample_post_thumbnail_sizes_attr', 10, 1 );
+add_filter( 'wp_get_attachment_image_attributes', 'svtheme_post_thumbnail_sizes_attr', 10, 1 );
 
 /**
  * Returns the size for avatars used in the theme.
  */
-function svexample_get_avatar_size() {
+function svtheme_get_avatar_size() {
 	return 60;
 }
 
@@ -143,7 +143,7 @@ function svexample_get_avatar_size() {
  *
  * @see get_comment_class()
  */
-function svexample_is_comment_by_post_author( $comment = null ) {
+function svtheme_is_comment_by_post_author( $comment = null ) {
 	if ( is_object( $comment ) && $comment->user_id > 0 ) {
 		$user = get_userdata( $comment->user_id );
 		$post = get_post( $comment->comment_post_ID );
@@ -157,7 +157,7 @@ function svexample_is_comment_by_post_author( $comment = null ) {
 /**
  * Returns information about the current post's discussion, with cache support.
  */
-function svexample_get_discussion_data() {
+function svtheme_get_discussion_data() {
 	static $discussion, $post_id;
 
 	$current_post_id = get_the_ID();
@@ -198,7 +198,7 @@ function svexample_get_discussion_data() {
  * @param object $args      Nav menu args.
  * @return string More link for hidden menu items.
  */
-function svexample_add_ellipses_to_nav( $nav_menu, $args ) {
+function svtheme_add_ellipses_to_nav( $nav_menu, $args ) {
 
 	if ( 'menu-1' === $args->theme_location ) :
 
@@ -206,14 +206,14 @@ function svexample_add_ellipses_to_nav( $nav_menu, $args ) {
 		$nav_menu .= '<ul class="main-menu">';
 		$nav_menu .= '<li class="menu-item menu-item-has-children">';
 		$nav_menu .= '<button class="submenu-expand main-menu-more-toggle is-empty" tabindex="-1" aria-label="More" aria-haspopup="true" aria-expanded="false">';
-		$nav_menu .= '<span class="screen-reader-text">' . esc_html__( 'More', 'svexample' ) . '</span>';
-		$nav_menu .= svexample_get_icon_svg( 'arrow_drop_down_ellipsis' );
+		$nav_menu .= '<span class="screen-reader-text">' . esc_html__( 'More', 'svtheme' ) . '</span>';
+		$nav_menu .= svtheme_get_icon_svg( 'arrow_drop_down_ellipsis' );
 		$nav_menu .= '</button>';
 		$nav_menu .= '<ul class="sub-menu hidden-links">';
 		$nav_menu .= '<li id="menu-item--1" class="mobile-parent-nav-menu-item menu-item--1">';
 		$nav_menu .= '<button class="menu-item-link-return">';
-		$nav_menu .= svexample_get_icon_svg( 'chevron_left' );
-		$nav_menu .= esc_html__( 'Back', 'svexample' );
+		$nav_menu .= svtheme_get_icon_svg( 'chevron_left' );
+		$nav_menu .= esc_html__( 'Back', 'svtheme' );
 		$nav_menu .= '</button>';
 		$nav_menu .= '</li>';
 		$nav_menu .= '</ul>';
@@ -225,7 +225,7 @@ function svexample_add_ellipses_to_nav( $nav_menu, $args ) {
 
 	return $nav_menu;
 }
-add_filter( 'wp_nav_menu', 'svexample_add_ellipses_to_nav', 10, 2 );
+add_filter( 'wp_nav_menu', 'svtheme_add_ellipses_to_nav', 10, 2 );
 
 /**
  * WCAG 2.0 Attributes for Dropdown Menus
@@ -235,7 +235,7 @@ add_filter( 'wp_nav_menu', 'svexample_add_ellipses_to_nav', 10, 2 );
  *
  * @ref https://www.w3.org/WAI/tutorials/menus/flyout/
  */
-function svexample_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
+function svtheme_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
 
 	// Add [aria-haspopup] and [aria-expanded] to menu items that have children
 	$item_has_children = in_array( 'menu-item-has-children', $item->classes );
@@ -246,7 +246,7 @@ function svexample_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
 
 	return $atts;
 }
-add_filter( 'nav_menu_link_attributes', 'svexample_nav_menu_link_attributes', 10, 4 );
+add_filter( 'nav_menu_link_attributes', 'svtheme_nav_menu_link_attributes', 10, 4 );
 
 /**
  * Add a dropdown icon to top-level menu items.
@@ -258,7 +258,7 @@ add_filter( 'nav_menu_link_attributes', 'svexample_nav_menu_link_attributes', 10
  * @return string Nav menu item start element.
  * Add a dropdown icon to top-level menu items
  */
-function svexample_add_dropdown_icons( $output, $item, $depth, $args ) {
+function svtheme_add_dropdown_icons( $output, $item, $depth, $args ) {
 
 	// Only add class to 'top level' items on the 'primary' menu.
 	if ( ! isset( $args->theme_location ) || 'menu-1' !== $args->theme_location ) {
@@ -270,7 +270,7 @@ function svexample_add_dropdown_icons( $output, $item, $depth, $args ) {
 		// @todo Only do this for nested submenus? If on a first-level submenu, then really the link could be "#" since the desire is to remove the target entirely.
 		$link = sprintf(
 			'<button class="menu-item-link-return" tabindex="-1">%s',
-			svexample_get_icon_svg( 'chevron_left', 24 )
+			svtheme_get_icon_svg( 'chevron_left', 24 )
 		);
 
 		// replace opening <a> with <button>
@@ -292,7 +292,7 @@ function svexample_add_dropdown_icons( $output, $item, $depth, $args ) {
 	} elseif ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 
 		// Add SVG icon to parent items.
-		$icon = svexample_get_icon_svg( 'keyboard_arrow_down', 24 );
+		$icon = svtheme_get_icon_svg( 'keyboard_arrow_down', 24 );
 
 		$output .= sprintf(
 			'<button class="submenu-expand" tabindex="-1">%s</button>',
@@ -302,7 +302,7 @@ function svexample_add_dropdown_icons( $output, $item, $depth, $args ) {
 
 	return $output;
 }
-add_filter( 'walker_nav_menu_start_el', 'svexample_add_dropdown_icons', 10, 4 );
+add_filter( 'walker_nav_menu_start_el', 'svtheme_add_dropdown_icons', 10, 4 );
 
 /**
  * Create a nav menu item to be displayed on mobile to navigate from submenu back to the parent.
@@ -313,7 +313,7 @@ add_filter( 'walker_nav_menu_start_el', 'svexample_add_dropdown_icons', 10, 4 );
  * @param object $args              Nav menu args.
  * @return array Amended nav menu items.
  */
-function svexample_add_mobile_parent_nav_menu_items( $sorted_menu_items, $args ) {
+function svtheme_add_mobile_parent_nav_menu_items( $sorted_menu_items, $args ) {
 	static $pseudo_id = 0;
 	if ( ! isset( $args->theme_location ) || 'menu-1' !== $args->theme_location ) {
 		return $sorted_menu_items;
@@ -337,12 +337,12 @@ function svexample_add_mobile_parent_nav_menu_items( $sorted_menu_items, $args )
 
 	return $amended_menu_items;
 }
-add_filter( 'wp_nav_menu_objects', 'svexample_add_mobile_parent_nav_menu_items', 10, 2 );
+add_filter( 'wp_nav_menu_objects', 'svtheme_add_mobile_parent_nav_menu_items', 10, 2 );
 
 /**
  * Convert HSL to HEX colors
  */
-function svexample_hsl_hex( $h, $s, $l, $to_hex = true ) {
+function svtheme_hsl_hex( $h, $s, $l, $to_hex = true ) {
 
 	$h /= 360;
 	$s /= 100;
