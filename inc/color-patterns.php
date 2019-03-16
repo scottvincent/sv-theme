@@ -3,7 +3,7 @@
  * Twenty Nineteen: Color Patterns
  *
  * @package WordPress
- * @subpackage SvExample
+ * @subpackage SvTheme
  * @since 1.0
  */
 

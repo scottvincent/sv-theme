@@ -8,7 +8,7 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package WordPress
- * @subpackage Sv_Example
+ * @subpackage Sv_Theme
  * @since 1.0.0
  */
 
@@ -75,7 +75,7 @@ $discussion = svexample_get_discussion_data();
 			<?php
 			wp_list_comments(
 				array(
-					'walker'      => new SvExample_Walker_Comment(),
+					'walker'      => new SvTheme_Walker_Comment(),
 					'avatar_size' => svexample_get_avatar_size(),
 					'short_ping'  => true,
 					'style'       => 'ol',

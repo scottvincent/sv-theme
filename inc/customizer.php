@@ -3,7 +3,7 @@
  * Twenty Nineteen: Customizer
  *
  * @package WordPress
- * @subpackage Sv_Example
+ * @subpackage Sv_Theme
  * @since 1.0.0
  */
 
@@ -126,7 +126,7 @@ function svexample_customize_partial_blogdescription() {
  */
 function svexample_customize_preview_js() {
 	wp_enqueue_script( 'svexample-customize-preview', get_theme_file_uri( '/js/customize-preview.js' ), array( 'customize-preview' ), '20181231', true );
-	wp_localize_script( 'svexample-customize-preview', '_SvExamplePreviewData', array(
+	wp_localize_script( 'svexample-customize-preview', '_SvThemePreviewData', array(
 		'default_hue' => svexample_get_default_hue()
 	));
 }

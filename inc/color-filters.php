@@ -3,7 +3,7 @@
  * Twenty Nineteen: Color Filter for overriding the colors schemes in a child theme
  *
  * @package WordPress
- * @subpackage SvExample
+ * @subpackage SvTheme
  * @since 1.0
  */
 

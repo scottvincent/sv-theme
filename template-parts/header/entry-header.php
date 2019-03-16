@@ -3,25 +3,25 @@
  * Displays the post header
  *
  * @package WordPress
- * @subpackage Sv_Example
+ * @subpackage Sv_Theme
  * @since 1.0.0
  */
 
-$discussion = ! is_page() && svexample_can_show_post_thumbnail() ? svexample_get_discussion_data() : null; ?>
+$discussion = ! is_page() && svtheme_can_show_post_thumbnail() ? svtheme_get_discussion_data() : null; ?>
 
 <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 <?php if ( ! is_page() ) : ?>
 <div class="entry-meta">
-	<?php svexample_posted_by(); ?>
-	<?php svexample_posted_on(); ?>
+	<?php svtheme_posted_by(); ?>
+	<?php svtheme_posted_on(); ?>
 	<span class="comment-count">
 		<?php
 		if ( ! empty( $discussion ) ) {
-			svexample_discussion_avatars_list( $discussion->authors );
+			svtheme_discussion_avatars_list( $discussion->authors );
 		}
 		?>
-		<?php svexample_comment_count(); ?>
+		<?php svtheme_comment_count(); ?>
 	</span>
 	<?php
 	// Edit post link.
@@ -29,7 +29,7 @@ $discussion = ! is_page() && svexample_can_show_post_thumbnail() ? svexample_get
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers. */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'svexample' ),
+					__( 'Edit <span class="screen-reader-text">%s</span>', 'svtheme' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -38,7 +38,7 @@ $discussion = ! is_page() && svexample_can_show_post_thumbnail() ? svexample_get
 				),
 				get_the_title()
 			),
-			'<span class="edit-link">' . svexample_get_icon_svg( 'edit', 16 ),
+			'<span class="edit-link">' . svtheme_get_icon_svg( 'edit', 16 ),
 			'</span>'
 		);
 	?>

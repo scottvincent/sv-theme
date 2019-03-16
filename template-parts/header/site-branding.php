@@ -3,7 +3,7 @@
  * Displays header site branding
  *
  * @package WordPress
- * @subpackage Sv_Example
+ * @subpackage Sv_Theme
  * @since 1.0.0
  */
 ?>
@@ -30,7 +30,7 @@
 			</p>
 	<?php endif; ?>
 	<?php if ( has_nav_menu( 'menu-1' ) ) : ?>
-		<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'svexample' ); ?>">
+		<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'svtheme' ); ?>">
 			<?php
 			wp_nav_menu(
 				array(
@@ -43,14 +43,14 @@
 		</nav><!-- #site-navigation -->
 	<?php endif; ?>
 	<?php if ( has_nav_menu( 'social' ) ) : ?>
-		<nav class="social-navigation" aria-label="<?php esc_attr_e( 'Social Links Menu', 'svexample' ); ?>">
+		<nav class="social-navigation" aria-label="<?php esc_attr_e( 'Social Links Menu', 'svtheme' ); ?>">
 			<?php
 			wp_nav_menu(
 				array(
 					'theme_location' => 'social',
 					'menu_class'     => 'social-links-menu',
 					'link_before'    => '<span class="screen-reader-text">',
-					'link_after'     => '</span>' . svexample_get_icon_svg( 'link' ),
+					'link_after'     => '</span>' . svtheme_get_icon_svg( 'link' ),
 					'depth'          => 1,
 				)
 			);

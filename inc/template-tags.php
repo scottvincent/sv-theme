@@ -3,15 +3,15 @@
  * Custom template tags for this theme
  *
  * @package WordPress
- * @subpackage Sv_Example
+ * @subpackage Sv_Theme
  * @since 1.0.0
  */
 
-if ( ! function_exists( 'svexample_posted_on' ) ) :
+if ( ! function_exists( 'svtheme_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
 	 */
-	function svexample_posted_on() {
+	function svtheme_posted_on() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -27,81 +27,81 @@ if ( ! function_exists( 'svexample_posted_on' ) ) :
 
 		printf(
 			'<span class="posted-on">%1$s<a href="%2$s" rel="bookmark">%3$s</a></span>',
-			svexample_get_icon_svg( 'watch', 16 ),
+			svtheme_get_icon_svg( 'watch', 16 ),
 			esc_url( get_permalink() ),
 			$time_string
 		);
 	}
 endif;
 
-if ( ! function_exists( 'svexample_posted_by' ) ) :
+if ( ! function_exists( 'svtheme_posted_by' ) ) :
 	/**
 	 * Prints HTML with meta information about theme author.
 	 */
-	function svexample_posted_by() {
+	function svtheme_posted_by() {
 		printf(
 			/* translators: 1: SVG icon. 2: post author, only visible to screen readers. 3: author link. */
 			'<span class="byline">%1$s<span class="screen-reader-text">%2$s</span><span class="author vcard"><a class="url fn n" href="%3$s">%4$s</a></span></span>',
-			svexample_get_icon_svg( 'person', 16 ),
-			__( 'Posted by', 'svexample' ),
+			svtheme_get_icon_svg( 'person', 16 ),
+			__( 'Posted by', 'svtheme' ),
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 			esc_html( get_the_author() )
 		);
 	}
 endif;
 
-if ( ! function_exists( 'svexample_comment_count' ) ) :
+if ( ! function_exists( 'svtheme_comment_count' ) ) :
 	/**
 	 * Prints HTML with the comment count for the current post.
 	 */
-	function svexample_comment_count() {
+	function svtheme_comment_count() {
 		if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 			echo '<span class="comments-link">';
-			echo svexample_get_icon_svg( 'comment', 16 );
+			echo svtheme_get_icon_svg( 'comment', 16 );
 
 			/* translators: %s: Name of current post. Only visible to screen readers. */
-			comments_popup_link( sprintf( __( 'Leave a comment<span class="screen-reader-text"> on %s</span>', 'svexample' ), get_the_title() ) );
+			comments_popup_link( sprintf( __( 'Leave a comment<span class="screen-reader-text"> on %s</span>', 'svtheme' ), get_the_title() ) );
 
 			echo '</span>';
 		}
 	}
 endif;
 
-if ( ! function_exists( 'svexample_entry_footer' ) ) :
+if ( ! function_exists( 'svtheme_entry_footer' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
-	function svexample_entry_footer() {
+	function svtheme_entry_footer() {
 
 		// Hide author, post date, category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
 
 			// Posted by
-			svexample_posted_by();
+			svtheme_posted_by();
 
 			// Posted on
-			svexample_posted_on();
+			svtheme_posted_on();
 
 			/* translators: used between list items, there is a space after the comma. */
-			$categories_list = get_the_category_list( __( ', ', 'svexample' ) );
+			$categories_list = get_the_category_list( __( ', ', 'svtheme' ) );
 			if ( $categories_list ) {
 				printf(
 					/* translators: 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of categories. */
 					'<span class="cat-links">%1$s<span class="screen-reader-text">%2$s</span>%3$s</span>',
-					svexample_get_icon_svg( 'archive', 16 ),
-					__( 'Posted in', 'svexample' ),
+					svtheme_get_icon_svg( 'archive', 16 ),
+					__( 'Posted in', 'svtheme' ),
 					$categories_list
 				); // WPCS: XSS OK.
 			}
 
 			/* translators: used between list items, there is a space after the comma. */
-			$tags_list = get_the_tag_list( '', __( ', ', 'svexample' ) );
+			$tags_list = get_the_tag_list( '', __( ', ', 'svtheme' ) );
 			if ( $tags_list ) {
 				printf(
 					/* translators: 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of tags. */
 					'<span class="tags-links">%1$s<span class="screen-reader-text">%2$s </span>%3$s</span>',
-					svexample_get_icon_svg( 'tag', 16 ),
-					__( 'Tags:', 'svexample' ),
+					svtheme_get_icon_svg( 'tag', 16 ),
+					__( 'Tags:', 'svtheme' ),
 					$tags_list
 				); // WPCS: XSS OK.
 			}
@@ -109,7 +109,7 @@ if ( ! function_exists( 'svexample_entry_footer' ) ) :
 
 		// Comment count.
 		if ( ! is_singular() ) {
-			svexample_comment_count();
+			svtheme_comment_count();
 		}
 
 		// Edit post link.
@@ -117,7 +117,7 @@ if ( ! function_exists( 'svexample_entry_footer' ) ) :
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers. */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'svexample' ),
+					__( 'Edit <span class="screen-reader-text">%s</span>', 'svtheme' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -126,21 +126,21 @@ if ( ! function_exists( 'svexample_entry_footer' ) ) :
 				),
 				get_the_title()
 			),
-			'<span class="edit-link">' . svexample_get_icon_svg( 'edit', 16 ),
+			'<span class="edit-link">' . svtheme_get_icon_svg( 'edit', 16 ),
 			'</span>'
 		);
 	}
 endif;
 
-if ( ! function_exists( 'svexample_post_thumbnail' ) ) :
+if ( ! function_exists( 'svtheme_post_thumbnail' ) ) :
 	/**
 	 * Displays an optional post thumbnail.
 	 *
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
 	 */
-	function svexample_post_thumbnail() {
-		if ( ! svexample_can_show_post_thumbnail() ) {
+	function svtheme_post_thumbnail() {
+		if ( ! svtheme_can_show_post_thumbnail() ) {
 			return;
 		}
 
@@ -166,25 +166,25 @@ if ( ! function_exists( 'svexample_post_thumbnail' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'svexample_comment_avatar' ) ) :
+if ( ! function_exists( 'svtheme_comment_avatar' ) ) :
 	/**
 	 * Returns the HTML markup to generate a user avatar.
 	 */
-	function svexample_get_user_avatar_markup( $id_or_email = null ) {
+	function svtheme_get_user_avatar_markup( $id_or_email = null ) {
 
 		if ( ! isset( $id_or_email ) ) {
 			$id_or_email = get_current_user_id();
 		}
 
-		return sprintf( '<div class="comment-user-avatar comment-author vcard">%s</div>', get_avatar( $id_or_email, svexample_get_avatar_size() ) );
+		return sprintf( '<div class="comment-user-avatar comment-author vcard">%s</div>', get_avatar( $id_or_email, svtheme_get_avatar_size() ) );
 	}
 endif;
 
-if ( ! function_exists( 'svexample_discussion_avatars_list' ) ) :
+if ( ! function_exists( 'svtheme_discussion_avatars_list' ) ) :
 	/**
 	 * Displays a list of avatars involved in a discussion for a given post.
 	 */
-	function svexample_discussion_avatars_list( $comment_authors ) {
+	function svtheme_discussion_avatars_list( $comment_authors ) {
 		if ( empty( $comment_authors ) ) {
 			return;
 		}
@@ -192,18 +192,18 @@ if ( ! function_exists( 'svexample_discussion_avatars_list' ) ) :
 		foreach ( $comment_authors as $id_or_email ) {
 			printf(
 				"<li>%s</li>\n",
-				svexample_get_user_avatar_markup( $id_or_email )
+				svtheme_get_user_avatar_markup( $id_or_email )
 			);
 		}
 		echo '</ol><!-- .discussion-avatar-list -->', "\n";
 	}
 endif;
 
-if ( ! function_exists( 'svexample_comment_form' ) ) :
+if ( ! function_exists( 'svtheme_comment_form' ) ) :
 	/**
 	 * Documentation for function.
 	 */
-	function svexample_comment_form( $order ) {
+	function svtheme_comment_form( $order ) {
 		if ( true === $order || strtolower( $order ) === strtolower( get_option( 'comment_order', 'asc' ) ) ) {
 
 			comment_form(
@@ -216,23 +216,23 @@ if ( ! function_exists( 'svexample_comment_form' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'svexample_the_posts_navigation' ) ) :
+if ( ! function_exists( 'svtheme_the_posts_navigation' ) ) :
 	/**
 	 * Documentation for function.
 	 */
-	function svexample_the_posts_navigation() {
+	function svtheme_the_posts_navigation() {
 		the_posts_pagination(
 			array(
 				'mid_size'  => 2,
 				'prev_text' => sprintf(
 					'%s <span class="nav-prev-text">%s</span>',
-					svexample_get_icon_svg( 'chevron_left', 22 ),
-					__( 'Newer posts', 'svexample' )
+					svtheme_get_icon_svg( 'chevron_left', 22 ),
+					__( 'Newer posts', 'svtheme' )
 				),
 				'next_text' => sprintf(
 					'<span class="nav-next-text">%s</span> %s',
-					__( 'Older posts', 'svexample' ),
-					svexample_get_icon_svg( 'chevron_right', 22 )
+					__( 'Older posts', 'svtheme' ),
+					svtheme_get_icon_svg( 'chevron_right', 22 )
 				),
 			)
 		);

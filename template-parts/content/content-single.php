@@ -5,14 +5,14 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package WordPress
- * @subpackage Sv_Example
+ * @subpackage Sv_Theme
  * @since 1.0.0
  */
 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php if ( ! svexample_can_show_post_thumbnail() ) : ?>
+	<?php if ( ! svtheme_can_show_post_thumbnail() ) : ?>
 	<header class="entry-header">
 		<?php get_template_part( 'template-parts/header/entry', 'header' ); ?>
 	</header>
@@ -24,7 +24,7 @@
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'svexample' ),
+					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'svtheme' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -37,7 +37,7 @@
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'svexample' ),
+				'before' => '<div class="page-links">' . __( 'Pages:', 'svtheme' ),
 				'after'  => '</div>',
 			)
 		);
@@ -45,7 +45,7 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php svexample_entry_footer(); ?>
+		<?php svtheme_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 
 	<?php if ( ! is_singular( 'attachment' ) ) : ?>

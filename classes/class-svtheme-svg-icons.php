@@ -3,7 +3,7 @@
  * SVG Icons class
  *
  * @package WordPress
- * @subpackage Sv_Example
+ * @subpackage Sv_Theme
  * @since 1.0.0
  */
 
@@ -19,7 +19,7 @@
  *
  * @since 1.0.0
  */
-class SvExample_SVG_Icons {
+class SvTheme_SVG_Icons {
 
 	/**
 	 * Gets the SVG code for a given icon.

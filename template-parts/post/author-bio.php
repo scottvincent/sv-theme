@@ -3,7 +3,7 @@
  * The template for displaying Author info
  *
  * @package WordPress
- * @subpackage Sv_Example
+ * @subpackage Sv_Theme
  * @since 1.0.0
  */
 
@@ -14,7 +14,7 @@ if ( (bool) get_the_author_meta( 'description' ) ) : ?>
 			<?php
 			printf(
 				/* translators: %s: post author */
-				__( 'Published by %s', 'svexample' ),
+				__( 'Published by %s', 'svtheme' ),
 				esc_html( get_the_author() )
 			);
 			?>
@@ -23,7 +23,7 @@ if ( (bool) get_the_author_meta( 'description' ) ) : ?>
 	<p class="author-description">
 		<?php the_author_meta( 'description' ); ?>
 		<a class="author-link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
-			<?php _e( 'View more posts', 'svexample' ); ?>
+			<?php _e( 'View more posts', 'svtheme' ); ?>
 		</a>
 	</p><!-- .author-description -->
 </div><!-- .author-bio -->

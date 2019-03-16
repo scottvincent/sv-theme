@@ -7,7 +7,7 @@
  * relies on many newer functions and markup changes introduced in 4.7.
  *
  * @package WordPress
- * @subpackage Sv_Example
+ * @subpackage Sv_Theme
  * @since Twenty Nineteen 1.0.0
  */
 

@@ -1,1 +1,1 @@
-sv-example
+sv-theme
