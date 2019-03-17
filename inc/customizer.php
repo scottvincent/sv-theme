@@ -1,6 +1,6 @@
 <?php
 /**
- * Twenty Nineteen: Customizer
+ * SV Theme: Customizer
  *
  * @package WordPress
  * @subpackage Sv_Theme

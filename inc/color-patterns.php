@@ -1,6 +1,6 @@
 <?php
 /**
- * Twenty Nineteen: Color Patterns
+ * SV Theme: Color Patterns
  *
  * @package WordPress
  * @subpackage SvTheme
@@ -18,9 +18,9 @@ function svtheme_custom_colors_css() {
 	}
 
 	/**
-	 * Filter Twenty Nineteen default saturation level.
+	 * Filter SV Theme default saturation level.
 	 *
-	 * @since Twenty Nineteen 1.0
+	 * @since SV Theme 1.0
 	 *
 	 * @param int $saturation Color saturation level.
 	 */
@@ -28,9 +28,9 @@ function svtheme_custom_colors_css() {
 	$saturation = absint( $saturation ) . '%';
 
 	/**
-	 * Filter Twenty Nineteen default selection saturation level.
+	 * Filter SV Theme default selection saturation level.
 	 *
-	 * @since Twenty Nineteen 1.0
+	 * @since SV Theme 1.0
 	 *
 	 * @param int $saturation_selection Selection color saturation level.
 	 */
@@ -38,9 +38,9 @@ function svtheme_custom_colors_css() {
 	$saturation_selection = absint( $saturation_selection ) . '%';
 
 	/**
-	 * Filter Twenty Nineteen default lightness level.
+	 * Filter SV Theme default lightness level.
 	 *
-	 * @since Twenty Nineteen 1.0
+	 * @since SV Theme 1.0
 	 *
 	 * @param int $lightness Color lightness level.
 	 */
@@ -48,9 +48,9 @@ function svtheme_custom_colors_css() {
 	$lightness = absint( $lightness ) . '%';
 
 	/**
-	 * Filter Twenty Nineteen default hover lightness level.
+	 * Filter SV Theme default hover lightness level.
 	 *
-	 * @since Twenty Nineteen 1.0
+	 * @since SV Theme 1.0
 	 *
 	 * @param int $lightness_hover Hover color lightness level.
 	 */
@@ -58,9 +58,9 @@ function svtheme_custom_colors_css() {
 	$lightness_hover = absint( $lightness_hover ) . '%';
 
 	/**
-	 * Filter Twenty Nineteen default selection lightness level.
+	 * Filter SV Theme default selection lightness level.
 	 *
-	 * @since Twenty Nineteen 1.0
+	 * @since SV Theme 1.0
 	 *
 	 * @param int $lightness_selection Selection color lightness level.
 	 */
@@ -259,9 +259,9 @@ function svtheme_custom_colors_css() {
 	}
 
 	/**
-	 * Filters Twenty Nineteen custom colors CSS.
+	 * Filters SV Theme custom colors CSS.
 	 *
-	 * @since Twenty Nineteen 1.0
+	 * @since SV Theme 1.0
 	 *
 	 * @param string $css           Base theme colors CSS.
 	 * @param int    $primary_color The user's selected color hue.
